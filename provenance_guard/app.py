@@ -9,6 +9,7 @@ from .config import settings
 from .errors import APIError
 from .ensemble import combine
 from .groq_signal import assess_semantic
+from .metadata import analyze_metadata
 from .repetition import assess_repetition
 from .storage import Store
 from .stylometry import assess_stylometry
@@ -61,14 +62,19 @@ def create_app(config=None):
     @limiter.limit(lambda: app.config["SUBMISSION_LIMITS"])
     def submit():
         data = json_object()
-        fields(data, ("text", "creator_id"), ("content_type",))
-        if data.get("content_type", "text") != "text":
-            raise APIError("invalid_content_type", "This endpoint currently accepts text.")
+        content_type = data.get("content_type", "text")
         creator_id = creator(data)
-        text = string(data, "text", app.config["MAX_TEXT_LENGTH"])
-        assessment = combine(text, {"groq": semantic(text), "stylometry": stylometry(text),
-                                    "repetition": repetition(text)})
-        record = store.submit(creator_id, text, assessment)
+        if content_type == "text":
+            fields(data, ("text", "creator_id"), ("content_type",))
+            content = string(data, "text", app.config["MAX_TEXT_LENGTH"])
+            assessment = combine(content, {"groq": semantic(content), "stylometry": stylometry(content),
+                                           "repetition": repetition(content)})
+        elif content_type == "metadata":
+            fields(data, ("metadata", "creator_id", "content_type"))
+            content, assessment = analyze_metadata(data["metadata"])
+        else:
+            raise APIError("invalid_content_type", "content_type must be text or metadata.")
+        record = store.submit(creator_id, content, assessment, content_type)
         record["certificate"] = verification.for_creator(creator_id)
         return jsonify(record), 201
 
