@@ -322,3 +322,27 @@ unauthenticated local demo views before any production deployment.
 Acceptance: seeded test records produce exact counts/rates, an appeal changes the
 appeal metric without incrementing submissions, empty databases render correctly,
 and the page displays the same real values returned by the analytics endpoint.
+
+## Stretch 4 — structured metadata modality — October 20, 2026
+
+The actual assignment explicitly allows structured metadata as a second content
+type. Design: `POST /submit` accepts `content_type: "metadata"`, `creator_id` and
+`metadata` instead of text. Metadata schema: title (1..200), medium
+(`image`, `audio`, `video`, `mixed_media`), tools (0..20 short names), creation_steps
+(1..20 objects with description and timezone-aware ISO timestamp), and
+ai_disclosure (`none`, `assisted`, `generated`, `undisclosed`). Reject unknown
+fields, mixed text/metadata payloads and malformed timestamps.
+
+A separate local analysis path measures duplicate steps, timeline ordering and
+future timestamps; summarize counts and self-reported disclosure without storing
+full descriptions/tool names in audit events. Hash canonical metadata for content
+integrity. All declarations are unverified. These checks do not inspect pixels,
+audio, video, or prove the supplied history is genuine. Return `uncertain`, null
+AI-likelihood, confidence 0, the exact uncertain label and
+`analysis_status: metadata_only`. Metadata consistency is not authorship evidence.
+
+Use the same SQLite persistence, appeal workflow, creator credential, per-IP
+submission quota and analytics as text. Acceptance: valid metadata persists,
+explicit duplicate/out-of-order/future warnings work, invalid schema rejects
+without calling Groq, no raw metadata in audit events, metadata can be appealed,
+and alternating text/metadata requests share the same rate limit.
