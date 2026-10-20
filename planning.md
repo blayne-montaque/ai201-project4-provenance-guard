@@ -259,3 +259,18 @@ and injected clients, no paid API required. Live Groq smoke is separate.
 
 Each concrete stretch design and acceptance criteria will follow in a dated
 subsection before its code exists.
+
+## Stretch 1 — ensemble detection — October 20, 2026
+
+Design checkpoint, after A and before B: implement the three distinct signals and
+50/30/20 weights already specified above. Lexical phrase repetition has its own
+function and diagnostics; it must not reuse stylometric CV/TTR/punctuation as its
+score. Missing semantic evidence yields a null combined score and an uncertain
+label; disagreement greater than 0.50 prevents directional attribution.
+
+Acceptance: independently test stylometry on formal/casual/poem/borderline samples
+before integration; verify weighted math and inclusive 0.15/0.85 boundaries;
+exercise all three exact labels with controlled signal outputs, plus disagreement,
+model uncertainty, insufficient text, missing Groq and nonalphabetic input.
+Run four assignment examples without claiming their claimed authorship is ground
+truth. Preserve fixed formulas even when a sample challenges intuition.
