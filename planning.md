@@ -274,3 +274,32 @@ exercise all three exact labels with controlled signal outputs, plus disagreemen
 model uncertainty, insufficient text, missing Groq and nonalphabetic input.
 Run four assignment examples without claiming their claimed authorship is ground
 truth. Preserve fixed formulas even when a sample challenges intuition.
+
+## Stretch 2 — provenance certificate — October 20, 2026
+
+Design before code: `POST /creators/register` reserves a demonstration creator ID
+and returns a server-generated 256-bit verification token once. Persist only a
+random salt and PBKDF2-HMAC-SHA256 verifier (200,000 iterations). Registration is
+first-come and does not verify real-world identity or humanity.
+
+`POST /verification/challenge` returns a random nonce and challenge ID bound to
+that creator for five minutes. New challenges invalidate older ones. Persist only
+the nonce hash. `POST /verification/verify` supplies creator ID, challenge ID,
+nonce, and original verification token; compare hash/verifier in constant time,
+limit to five failed attempts, atomically consume a successful challenge and issue
+a certificate. Never log secrets, nonce values, or rejected request bodies.
+The token must be transmitted only over HTTPS outside this localhost demo.
+
+Certificate fields: ID, creator ID, method, issue timestamp, verification status,
+display label and scope statement. `GET /certificates/<id>` verifies the persisted
+record; `GET /content/<id>` and submission responses expose the associated current
+credential. Label: `Verified secret control (demo)`. It does NOT prove a person is
+human, that a legal identity is verified, or that this specific work was human
+written. This is the honest, limited implementation of the assignment's
+"verified human" credential concept, as requested in the implementation brief.
+
+Acceptance: cannot issue without a successful challenge; wrong token/nonce,
+wrong creator, unknown/expired/used challenges, attempt exhaustion and duplicate
+registration fail; successful certificate survives restart and appears on content;
+raw secrets are absent from database and audit output. Rate limit verification
+routes. Local storage must not require external identity services.
