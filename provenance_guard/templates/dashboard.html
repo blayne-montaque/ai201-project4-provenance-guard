@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Provenance Guard · Local analytics</title>
+  <style>
+    :root { color-scheme: light; --ink:#172f34; --muted:#52686b; --line:#d4e0dc; --accent:#166c5d; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#f3f6f2; color:var(--ink); font:16px/1.55 system-ui,sans-serif; }
+    main { max-width:1080px; margin:auto; padding:40px 24px 64px; }
+    nav, header, .metric-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; }
+    nav { border-bottom:1px solid var(--line); padding-bottom:18px; align-items:center; }
+    nav strong { letter-spacing:.04em; } a { color:var(--accent); text-underline-offset:4px; }
+    nav a { margin-left:16px; } header { padding:40px 0 24px; align-items:end; }
+    h1 { font-size:clamp(2rem,5vw,3rem); line-height:1.1; margin:8px 0 16px; letter-spacing:-.04em; }
+    h2 { margin:0 0 24px; font-size:1.2rem; } p { max-width:65ch; }
+    .eyebrow { text-transform:uppercase; font-size:.75rem; letter-spacing:.13em; color:var(--accent); font-weight:700; }
+    .muted { color:var(--muted); } .badge { background:#deede5; padding:6px 12px; border-radius:20px; font-size:.8rem; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:24px; }
+    .metric-grid { gap:16px; } .metric-grid .card { flex:1 1 200px; }
+    .value { font-size:2.3rem; font-weight:650; margin:4px 0; letter-spacing:-.03em; }
+    .panels { display:grid; grid-template-columns:1.3fr 1fr; gap:20px; margin-top:24px; }
+    .row { display:flex; justify-content:space-between; gap:16px; margin-bottom:8px; }
+    .bar { height:10px; border-radius:8px; background:#e8eeea; overflow:hidden; margin-bottom:24px; }
+    .fill { height:100%; background:var(--accent); } .fill.uncertain { background:#987626; }
+    dl { margin:0; } dt { color:var(--muted); } dd { margin:4px 0 20px; font-size:1.4rem; }
+    .note { padding:20px 0; font-size:.9rem; } footer { border-top:1px solid var(--line); padding-top:18px; font-size:.8rem; }
+    @media(max-width:720px) { .panels { grid-template-columns:1fr; } main { padding:24px 16px; } }
+  </style>
+</head>
+<body><main>
+  <nav aria-label="Main navigation"><strong>PROVENANCE GUARD</strong><div><a href="/analytics">Analytics JSON</a><a href="/log">Audit log</a></div></nav>
+  <header><div><span class="eyebrow">Local observation desk</span><h1>Attribution, with context.</h1><p class="muted">A view of actual submissions and appeals in this SQLite database. These patterns describe system decisions; they do not measure detection accuracy.</p></div><span class="badge">Local demo · No authentication</span></header>
+  <section class="metric-grid" aria-label="Key metrics">
+    <div class="card"><span class="muted">Submissions</span><div class="value">{{ metrics.total_submissions }}</div><span class="muted">Unique creative works</span></div>
+    <div class="card"><span class="muted">Appeals</span><div class="value">{{ metrics.appeals_count }}</div><span class="muted">{{ '%.1f'|format(metrics.appeal_rate * 100) }}% of submissions</span></div>
+    <div class="card"><span class="muted">Uncertain attribution</span><div class="value">{{ '%.1f'|format(metrics.uncertainty_rate * 100) }}%</div><span class="muted">No directional attribution</span></div>
+    <div class="card"><span class="muted">Mean decision confidence</span><div class="value">{{ '%.3f'|format(metrics.average_confidence) }}</div><span class="muted">Uncalibrated support measure</span></div>
+  </section>
+  <div class="panels">
+    <section class="card"><h2>Attribution distribution</h2>
+      {% for key, label in [('likely_ai','AI involvement suspected'),('likely_human','Consistent with human writing'),('uncertain','Authorship uncertain')] %}
+      {% set count = metrics.attribution_distribution[key] %}
+      {% set percent = 100 * count / metrics.total_submissions if metrics.total_submissions else 0 %}
+      <div class="row"><span>{{ label }}</span><strong>{{ count }} · {{ '%.1f'|format(percent) }}%</strong></div>
+      <div class="bar" aria-hidden="true"><div class="fill {{ key }}" style="width:{{ percent }}%"></div></div>
+      {% endfor %}
+      {% if not metrics.total_submissions %}<p class="muted">No submissions yet. Submit a work through POST /submit to populate this view.</p>{% endif %}
+    </section>
+    <section class="card"><h2>Evidence and coverage</h2><dl>
+      <dt>Signal disagreement rate</dt><dd>{{ '%.1f'|format(metrics.signal_disagreement_rate * 100) }}%</dd>
+      <dt>Content types</dt><dd>{% for kind, count in metrics.content_types.items() %}{{ kind }}: {{ count }}{% if not loop.last %}<br>{% endif %}{% else %}None yet{% endfor %}</dd>
+    </dl><p class="muted">Appeals retain the original scores. Confidence in an uncertain decision is different from a probability of AI authorship. Metadata-only submissions cannot establish authorship.</p></section>
+  </div>
+  <p class="note">This view contains aggregate data from private local records. Protect dashboard, log and content endpoints with authentication before production use. Refresh to read current data.</p>
+  <footer class="muted">Snapshot generated {{ metrics.generated_at }} · Provenance Guard · CodePath AI201</footer>
+</main></body></html>

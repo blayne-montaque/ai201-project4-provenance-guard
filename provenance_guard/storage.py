@@ -111,3 +111,24 @@ class Store:
         return [{**json.loads(row["payload"]), "event_id": row["event_id"],
                  "event_type": row["event_type"], "timestamp": row["timestamp"]} for row in rows]
 
+    def analytics(self):
+        with self.connection() as db:
+            db.execute("BEGIN")
+            records = db.execute("SELECT content_type, assessment FROM contents").fetchall()
+            appeals = db.execute("SELECT COUNT(*) FROM appeals").fetchone()[0]
+        total = len(records)
+        attribution = {"likely_ai": 0, "likely_human": 0, "uncertain": 0}
+        modalities, confidence, disagreements = {}, 0.0, 0
+        for row in records:
+            result = json.loads(row["assessment"])
+            attribution[result["attribution"]] += 1
+            confidence += result["confidence"]
+            disagreements += "signal_disagreement" in result.get("uncertainty_reasons", [])
+            modalities[row["content_type"]] = modalities.get(row["content_type"], 0) + 1
+        return {"total_submissions": total, "attribution_distribution": attribution,
+                "appeals_count": appeals, "appeal_rate": appeals / total if total else 0,
+                "average_confidence": confidence / total if total else 0,
+                "uncertainty_rate": attribution["uncertain"] / total if total else 0,
+                "signal_disagreement_rate": disagreements / total if total else 0,
+                "content_types": modalities, "generated_at": utcnow()}
+

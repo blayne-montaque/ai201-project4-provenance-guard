@@ -1,6 +1,6 @@
 import sqlite3
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from werkzeug.exceptions import HTTPException
@@ -124,6 +124,14 @@ def create_app(config=None):
         except ValueError:
             raise APIError("invalid_limit", "limit must be an integer between 1 and 200.") from None
         return jsonify(entries=store.log(limit))
+
+    @app.get("/analytics")
+    def analytics():
+        return jsonify(store.analytics())
+
+    @app.get("/dashboard")
+    def dashboard():
+        return render_template("dashboard.html", metrics=store.analytics())
 
     return app
 
