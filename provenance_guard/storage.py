@@ -84,6 +84,27 @@ class Store:
             raise APIError("content_not_found", "No content exists with that ID.", 404)
         return self._public(row)
 
+    def appeal(self, content_id, creator_id, reasoning):
+        with self.connection() as db:
+            # Acquire the write lock before read/check/write to serialize appeals.
+            db.execute("BEGIN IMMEDIATE")
+            row = db.execute("SELECT * FROM contents WHERE content_id=?", (content_id,)).fetchone()
+            if row is None:
+                raise APIError("content_not_found", "No content exists with that ID.", 404)
+            if row["creator_id"] != creator_id:
+                raise APIError("creator_mismatch", "The creator does not match this content.", 403)
+            if db.execute("SELECT 1 FROM appeals WHERE content_id=?", (content_id,)).fetchone():
+                raise APIError("duplicate_appeal", "An active appeal already exists for this content.", 409)
+            appeal_id, timestamp = str(uuid4()), utcnow()
+            db.execute("INSERT INTO appeals VALUES(?,?,?,?,?,?)",
+                       (appeal_id, content_id, creator_id, reasoning, timestamp, "under_review"))
+            db.execute("UPDATE contents SET status='under_review' WHERE content_id=?", (content_id,))
+            record = {**self._public(row), "status": "under_review", "appeal_filed": True,
+                      "appeal_id": appeal_id, "appeal_reasoning": reasoning,
+                      "classification_timestamp": row["timestamp"], "timestamp": timestamp}
+            self._event(db, "appeal", content_id, record)
+        return record
+
     def log(self, limit=50):
         with self.connection() as db:
             rows = db.execute("SELECT * FROM audit_events ORDER BY event_id DESC LIMIT ?", (limit,)).fetchall()

@@ -27,6 +27,10 @@ def string(value, key, maximum):
     result = value.get(key)
     if not isinstance(result, str) or not 1 <= len(result.strip()) <= maximum:
         raise APIError("invalid_field", f"{key} must be a nonempty string of at most {maximum} characters.")
+    try:
+        result.encode("utf-8")
+    except UnicodeEncodeError:
+        raise APIError("invalid_field", f"{key} must contain valid Unicode text.") from None
     return result.strip()
 
 

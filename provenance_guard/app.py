@@ -1,6 +1,8 @@
 import sqlite3
 
 from flask import Flask, jsonify, request
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from werkzeug.exceptions import HTTPException
 
 from .config import settings
@@ -23,6 +25,11 @@ def create_app(config=None):
     semantic = app.config.get("SEMANTIC_ANALYZER") or (lambda text: assess_semantic(text, app.config))
     stylometry = app.config.get("STYLOMETRIC_ANALYZER") or assess_stylometry
     repetition = app.config.get("REPETITION_ANALYZER") or assess_repetition
+    limiter = Limiter(get_remote_address, app=app, default_limits=[],
+                      storage_uri=app.config["RATELIMIT_STORAGE_URI"],
+                      headers_enabled=app.config["RATELIMIT_HEADERS_ENABLED"])
+    # Keep a strong reference even when disabled: decorated routes use weakrefs.
+    app.extensions["submission_limiter"] = limiter
 
     @app.errorhandler(APIError)
     def api_error(exc):
@@ -30,7 +37,8 @@ def create_app(config=None):
 
     @app.errorhandler(HTTPException)
     def http_error(exc):
-        return jsonify(error={"code": f"http_{exc.code}", "message": exc.name}), exc.code
+        code = "rate_limit_exceeded" if exc.code == 429 else f"http_{exc.code}"
+        return jsonify(error={"code": code, "message": exc.name}), exc.code
 
     @app.errorhandler(sqlite3.Error)
     def database_error(exc):
@@ -47,6 +55,7 @@ def create_app(config=None):
         return jsonify(status="ok", service="ai201-project4-provenance-guard")
 
     @app.post("/submit")
+    @limiter.limit(lambda: app.config["SUBMISSION_LIMITS"])
     def submit():
         data = json_object()
         fields(data, ("text", "creator_id"), ("content_type",))
@@ -57,6 +66,16 @@ def create_app(config=None):
         assessment = combine(text, {"groq": semantic(text), "stylometry": stylometry(text),
                                     "repetition": repetition(text)})
         return jsonify(store.submit(creator_id, text, assessment)), 201
+
+    @app.post("/appeal")
+    @limiter.limit("20 per minute")
+    def appeal():
+        data = json_object()
+        fields(data, ("content_id", "creator_id", "creator_reasoning"))
+        content_id = string(data, "content_id", 80)
+        creator_id = creator(data)
+        reasoning = string(data, "creator_reasoning", 2000)
+        return jsonify(store.appeal(content_id, creator_id, reasoning)), 201
 
     @app.get("/content/<content_id>")
     def get_content(content_id):
