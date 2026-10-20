@@ -13,6 +13,7 @@ from .repetition import assess_repetition
 from .storage import Store
 from .stylometry import assess_stylometry
 from .validation import creator, fields, json_object, string
+from .verification import Verification
 
 
 def create_app(config=None):
@@ -22,6 +23,8 @@ def create_app(config=None):
         app.config.update(config)
     store = Store(app.config["DATABASE"])
     app.extensions["store"] = store
+    verification = Verification(store)
+    app.extensions["verification"] = verification
     semantic = app.config.get("SEMANTIC_ANALYZER") or (lambda text: assess_semantic(text, app.config))
     stylometry = app.config.get("STYLOMETRIC_ANALYZER") or assess_stylometry
     repetition = app.config.get("REPETITION_ANALYZER") or assess_repetition
@@ -65,7 +68,9 @@ def create_app(config=None):
         text = string(data, "text", app.config["MAX_TEXT_LENGTH"])
         assessment = combine(text, {"groq": semantic(text), "stylometry": stylometry(text),
                                     "repetition": repetition(text)})
-        return jsonify(store.submit(creator_id, text, assessment)), 201
+        record = store.submit(creator_id, text, assessment)
+        record["certificate"] = verification.for_creator(creator_id)
+        return jsonify(record), 201
 
     @app.post("/appeal")
     @limiter.limit("20 per minute")
@@ -79,7 +84,36 @@ def create_app(config=None):
 
     @app.get("/content/<content_id>")
     def get_content(content_id):
-        return jsonify(store.get(content_id))
+        record = store.get(content_id)
+        record["certificate"] = verification.for_creator(record["creator_id"])
+        return jsonify(record)
+
+    @app.post("/creators/register")
+    @limiter.limit("5 per minute")
+    def register_creator():
+        data = json_object()
+        fields(data, ("creator_id",))
+        return jsonify(verification.register(creator(data))), 201
+
+    @app.post("/verification/challenge")
+    @limiter.limit("5 per minute")
+    def verification_challenge():
+        data = json_object()
+        fields(data, ("creator_id",))
+        return jsonify(verification.challenge(creator(data))), 201
+
+    @app.post("/verification/verify")
+    @limiter.limit("10 per minute")
+    def verification_response():
+        data = json_object()
+        fields(data, ("creator_id", "challenge_id", "nonce", "verification_token"))
+        certificate = verification.verify(creator(data), string(data, "challenge_id", 80),
+                                          string(data, "nonce", 100), string(data, "verification_token", 100))
+        return jsonify(certificate), 201
+
+    @app.get("/certificates/<certificate_id>")
+    def get_certificate(certificate_id):
+        return jsonify(verification.get(certificate_id))
 
     @app.get("/log")
     def log():
