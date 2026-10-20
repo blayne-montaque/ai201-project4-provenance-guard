@@ -442,6 +442,11 @@ Invoke-RestMethod http://127.0.0.1:5000/submit -Method Post -ContentType 'applic
 
 ## Reproducing tests and evidence
 
+Latest observed local run: **131 passed, 0 failed, 0 skipped** (October 20, 2026).
+[Machine-readable pytest result](artifacts/pytest-results.xml) is committed.
+`pip check` reported no broken requirements. Real localhost HTTP startup and
+dashboard requests both returned 200; submission quota results are recorded above.
+
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q
 .\.venv\Scripts\python.exe -m pip check
