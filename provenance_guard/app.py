@@ -5,8 +5,11 @@ from werkzeug.exceptions import HTTPException
 
 from .config import settings
 from .errors import APIError
+from .ensemble import combine
 from .groq_signal import assess_semantic
+from .repetition import assess_repetition
 from .storage import Store
+from .stylometry import assess_stylometry
 from .validation import creator, fields, json_object, string
 
 
@@ -18,6 +21,8 @@ def create_app(config=None):
     store = Store(app.config["DATABASE"])
     app.extensions["store"] = store
     semantic = app.config.get("SEMANTIC_ANALYZER") or (lambda text: assess_semantic(text, app.config))
+    stylometry = app.config.get("STYLOMETRIC_ANALYZER") or assess_stylometry
+    repetition = app.config.get("REPETITION_ANALYZER") or assess_repetition
 
     @app.errorhandler(APIError)
     def api_error(exc):
@@ -49,12 +54,8 @@ def create_app(config=None):
             raise APIError("invalid_content_type", "This endpoint currently accepts text.")
         creator_id = creator(data)
         text = string(data, "text", app.config["MAX_TEXT_LENGTH"])
-        signal = semantic(text)
-        # Checkpoint A deliberately exposes a provisional, non-directional result.
-        assessment = {"attribution": "uncertain", "ai_likelihood_score": signal.score,
-                      "confidence": 0.0, "label": "Initial semantic assessment; ensemble pending.",
-                      "signals": {"groq": signal.public()},
-                      "uncertainty_reasons": ["checkpoint_a_ensemble_pending"]}
+        assessment = combine(text, {"groq": semantic(text), "stylometry": stylometry(text),
+                                    "repetition": repetition(text)})
         return jsonify(store.submit(creator_id, text, assessment)), 201
 
     @app.get("/content/<content_id>")
