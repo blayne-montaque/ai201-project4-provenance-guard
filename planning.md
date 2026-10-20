@@ -303,3 +303,22 @@ wrong creator, unknown/expired/used challenges, attempt exhaustion and duplicate
 registration fail; successful certificate survives restart and appears on content;
 raw secrets are absent from database and audit output. Rate limit verification
 routes. Local storage must not require external identity services.
+
+## Stretch 3 — analytics dashboard — October 20, 2026
+
+Design before code: aggregate actual SQLite content and appeal records in one
+read transaction. `GET /analytics` returns total submissions, attribution counts,
+appeals count/rate, mean decision confidence, uncertainty rate, signal disagreement
+rate and content-type counts. Use unique content records as the rate denominator,
+not audit events (appeals add audit rows but not submissions). Empty data returns
+zeros, never division errors. Different modality confidence semantics are disclosed.
+
+`GET /dashboard` renders a responsive, server-rendered Flask/Jinja HTML view with
+accessible counts and percentage bars. No CDN, external scripts, fabricated rows,
+or new frontend dependency. Explain that rates describe usage, not detector
+accuracy; provide links to raw analytics and log endpoints. Protect these
+unauthenticated local demo views before any production deployment.
+
+Acceptance: seeded test records produce exact counts/rates, an appeal changes the
+appeal metric without incrementing submissions, empty databases render correctly,
+and the page displays the same real values returned by the analytics endpoint.
