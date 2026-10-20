@@ -1,0 +1,14 @@
+{
+  "creator_id": "demo-artist",
+  "content_type": "metadata",
+  "metadata": {
+    "title": "Evening study",
+    "medium": "image",
+    "tools": ["Pencil", "Scanner"],
+    "ai_disclosure": "none",
+    "creation_steps": [
+      {"description": "Sketched trees by the river.", "timestamp": "2026-01-01T13:00:00Z"},
+      {"description": "Scanned the pencil drawing.", "timestamp": "2026-01-01T14:00:00Z"}
+    ]
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "mode": "offline",
+  "entries": [
+    {
+      "ai_likelihood_score": null,
+      "analysis_status": "degraded",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.0,
+      "content_hash": "fff4ce484ab66532e6b68fd5f462093d50d158016471e761d1e4a5f5d9c509c9",
+      "content_id": "0e39055e-6288-4081-a083-7cff0ae91d22",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 1,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9816849816849816,
+        "sentence_count": 3,
+        "sufficiency": 0.5375,
+        "word_count": 43
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": null,
+      "signal_spread": null,
+      "signals": {
+        "groq": {
+          "available": false,
+          "diagnostics": {
+            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+            "reason": "missing_api_key"
+          },
+          "insufficient_evidence": true,
+          "name": "groq",
+          "score": null
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.0,
+            "repeated_trigram_fraction": 0.0,
+            "trigram_count": 41,
+            "unique_trigrams": 41
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.0
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 2,
+            "sentence_count": 3,
+            "sentence_length_cv": 0.3792908472162812,
+            "type_token_ratio": 0.8837209302325582,
+            "word_count": 43
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.4785716306554253
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-20T20:54:21.882159+00:00",
+      "uncertainty_reasons": [
+        "insufficient_text",
+        "groq_unavailable"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": null,
+      "analysis_status": "degraded",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.0,
+      "content_hash": "0831a1143d08fdac20fb2478b7d80d01135824c2fbda73bc45313b97c6e7a548",
+      "content_id": "0b324bed-d320-4434-a3b0-f074a7c117ac",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 2,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9790794979079498,
+        "sentence_count": 5,
+        "sufficiency": 0.6875,
+        "word_count": 55
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": null,
+      "signal_spread": null,
+      "signals": {
+        "groq": {
+          "available": false,
+          "diagnostics": {
+            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+            "reason": "missing_api_key"
+          },
+          "insufficient_evidence": true,
+          "name": "groq",
+          "score": null
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.0,
+            "repeated_trigram_fraction": 0.0,
+            "trigram_count": 53,
+            "unique_trigrams": 53
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.0
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 3,
+            "sentence_count": 5,
+            "sentence_length_cv": 0.6111904114171495,
+            "type_token_ratio": 0.8727272727272727,
+            "word_count": 55
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.3325866124732435
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-20T20:54:21.889964+00:00",
+      "uncertainty_reasons": [
+        "insufficient_text",
+        "groq_unavailable"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": null,
+      "analysis_status": "degraded",
+      "appeal_filed": true,
+      "appeal_id": "f26ca1e6-e9b5-4cf8-8614-697dbf69480b",
+      "appeal_reasoning": "Demonstration appeal: please review the original draft and its context.",
+      "attribution": "uncertain",
+      "classification_timestamp": "2026-10-20T20:54:21.881158+00:00",
+      "confidence": 0.0,
+      "content_hash": "fff4ce484ab66532e6b68fd5f462093d50d158016471e761d1e4a5f5d9c509c9",
+      "content_id": "0e39055e-6288-4081-a083-7cff0ae91d22",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 7,
+      "event_type": "appeal",
+      "evidence": {
+        "alphabetic_ratio": 0.9816849816849816,
+        "sentence_count": 3,
+        "sufficiency": 0.5375,
+        "word_count": 43
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": null,
+      "signal_spread": null,
+      "signals": {
+        "groq": {
+          "available": false,
+          "diagnostics": {
+            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+            "reason": "missing_api_key"
+          },
+          "insufficient_evidence": true,
+          "name": "groq",
+          "score": null
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.0,
+            "repeated_trigram_fraction": 0.0,
+            "trigram_count": 41,
+            "unique_trigrams": 41
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.0
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 2,
+            "sentence_count": 3,
+            "sentence_length_cv": 0.3792908472162812,
+            "type_token_ratio": 0.8837209302325582,
+            "word_count": 43
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.4785716306554253
+        }
+      },
+      "status": "under_review",
+      "timestamp": "2026-10-20T20:54:21.928894+00:00",
+      "uncertainty_reasons": [
+        "insufficient_text",
+        "groq_unavailable"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    }
+  ]
+}

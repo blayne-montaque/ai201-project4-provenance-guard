@@ -1,0 +1,299 @@
+{
+  "mode": "controlled",
+  "entries": [
+    {
+      "ai_likelihood_score": null,
+      "analysis_status": "metadata_only",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.0,
+      "content_hash": "5a40d0e38cfb4e469107fc87606ab49f7e9b7140eae76fea1e66754b5d1ab783",
+      "content_id": "f8e3b735-59af-4305-bfd9-d4b5b5fb3908",
+      "content_type": "metadata",
+      "creator_id": "demo-artist",
+      "event_id": 6,
+      "event_type": "submission",
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "Metadata consistency cannot establish authorship.",
+      "signals": {
+        "metadata_consistency": {
+          "available": true,
+          "diagnostics": {
+            "authorship_verified": false,
+            "medium": "image",
+            "self_reported_ai_disclosure": "none",
+            "step_count": 2,
+            "tool_count": 2,
+            "warnings": []
+          },
+          "insufficient_evidence": true,
+          "name": "metadata_consistency",
+          "score": null
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-20T20:54:22.690777+00:00",
+      "uncertainty_reasons": [
+        "metadata_is_self_reported",
+        "underlying_media_not_analyzed"
+      ]
+    },
+    {
+      "certificate_id": "7bc0ee9e-d2af-4300-8f5b-6a6e2e5ff4f8",
+      "creator_id": "demo-writer",
+      "display_label": "Verified secret control (demo)",
+      "event_id": 5,
+      "event_type": "certificate_issued",
+      "issued_at": "2026-10-20T20:54:22.682272+00:00",
+      "scope": "Verifies control of a registered token only; not humanity, identity, or authorship.",
+      "timestamp": "2026-10-20T20:54:22.682272+00:00",
+      "verification_method": "one_time_challenge_and_registered_token",
+      "verification_status": "verified_secret_control"
+    },
+    {
+      "ai_likelihood_score": 0.95,
+      "analysis_status": "complete",
+      "appeal_filed": true,
+      "appeal_id": "cc7fc0e4-3882-44d0-94c7-bbdaaa5d580c",
+      "appeal_reasoning": "Demonstration appeal: please review the original draft and its context.",
+      "attribution": "likely_ai",
+      "classification_timestamp": "2026-10-20T20:54:22.574436+00:00",
+      "confidence": 0.9,
+      "content_hash": "cf0e777685bfddf71f6d91a81b2924bfc488dfb7a31862e15654a89f4398d055",
+      "content_id": "6c3bc5a6-6d70-49f4-bd69-0f12fefd8cc7",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 4,
+      "event_type": "appeal",
+      "evidence": {
+        "alphabetic_ratio": 0.9872881355932204,
+        "sentence_count": 5,
+        "sufficiency": 1,
+        "word_count": 102
+      },
+      "label": "AI-generated content suspected. Multiple automated signals suggest AI involvement, but this assessment is not proof of authorship. The creator may request a review.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 1.0,
+      "signal_spread": 0.0,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "groq",
+          "score": 0.95
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.95
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.95
+        }
+      },
+      "status": "under_review",
+      "timestamp": "2026-10-20T20:54:22.599380+00:00",
+      "uncertainty_reasons": [],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": 0.05,
+      "analysis_status": "complete",
+      "appeal_filed": false,
+      "attribution": "likely_human",
+      "confidence": 0.9,
+      "content_hash": "4a78ee3c23eb4a09667252bc12bab1b93425bda034107f079b5099194b9617c1",
+      "content_id": "be5e2dbc-fba5-4e5e-929b-ccae01a9b351",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 3,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9873684210526316,
+        "sentence_count": 5,
+        "sufficiency": 1,
+        "word_count": 102
+      },
+      "label": "Likely human-written. Automated signals are consistent with human authorship, but this assessment cannot verify who created the content.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 1.0,
+      "signal_spread": 0.0,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "groq",
+          "score": 0.05
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.05
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.05
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-20T20:54:22.591662+00:00",
+      "uncertainty_reasons": [],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": 0.65,
+      "analysis_status": "complete",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.7,
+      "content_hash": "757d2d2ec5319023e7380988619c3411b1195dde3b1ade236fac89c4a40cff38",
+      "content_id": "c75f5b61-eafd-473c-a2ea-9370004afc7f",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 2,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9875,
+        "sentence_count": 5,
+        "sufficiency": 1,
+        "word_count": 102
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 1.0,
+      "signal_spread": 0.0,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "groq",
+          "score": 0.65
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.65
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.65
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-20T20:54:22.583662+00:00",
+      "uncertainty_reasons": [
+        "intermediate_score"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": 0.95,
+      "analysis_status": "complete",
+      "appeal_filed": false,
+      "attribution": "likely_ai",
+      "confidence": 0.9,
+      "content_hash": "cf0e777685bfddf71f6d91a81b2924bfc488dfb7a31862e15654a89f4398d055",
+      "content_id": "6c3bc5a6-6d70-49f4-bd69-0f12fefd8cc7",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 1,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9872881355932204,
+        "sentence_count": 5,
+        "sufficiency": 1,
+        "word_count": 102
+      },
+      "label": "AI-generated content suspected. Multiple automated signals suggest AI involvement, but this assessment is not proof of authorship. The creator may request a review.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 1.0,
+      "signal_spread": 0.0,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "groq",
+          "score": 0.95
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.95
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "source": "controlled_test_fixture"
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.95
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-20T20:54:22.575438+00:00",
+      "uncertainty_reasons": [],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    }
+  ]
+}

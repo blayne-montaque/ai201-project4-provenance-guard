@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-10-20T20:54:23.230803+00:00",
+  "transport": "real localhost HTTP / Werkzeug WSGI server",
+  "semantic_mode": "missing-key degraded analysis; no mocked scores or live model calls",
+  "limits": "10 per minute;100 per day",
+  "health": {
+    "http_status": 200,
+    "body": {
+      "service": "ai201-project4-provenance-guard",
+      "status": "ok"
+    }
+  },
+  "last_error": {
+    "error": {
+      "code": "rate_limit_exceeded",
+      "message": "Too Many Requests"
+    }
+  },
+  "retry_after": "60",
+  "statuses": [
+    201,
+    201,
+    201,
+    201,
+    201,
+    201,
+    201,
+    201,
+    201,
+    201,
+    429,
+    429
+  ],
+  "persisted_submissions": 10,
+  "dashboard_http_status": 200
+}
