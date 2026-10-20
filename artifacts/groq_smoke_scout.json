@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-10-20T20:44:10.067784+00:00",
+  "mode": "live_api_attempt",
+  "sample_source": "Codex-authored synthetic prose; not verified human text",
+  "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "assessment": {
+    "name": "groq",
+    "score": null,
+    "available": false,
+    "insufficient_evidence": true,
+    "diagnostics": {
+      "reason": "model_not_found",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "http_status": 404
+    }
+  },
+  "availability_check": {
+    "meta-llama/llama-4-scout-17b-16e-instruct": false,
+    "openai/gpt-oss-20b": true
+  }
+}
