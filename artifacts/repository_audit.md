@@ -1,6 +1,6 @@
 # Repository audit
 
-Generated 2026-10-20T21:01:13.681345+00:00. Snapshot HEAD: `9d80fbe`.
+Generated 2026-10-21T00:06:57.753041+00:00. Snapshot HEAD: `722ef46`.
 This file is generated before its own final audit commit; that commit cannot contain its own hash.
 
 ## Assignment review
@@ -17,7 +17,7 @@ Re-read the supplied complete assignment and mapped every visible feature/delive
 | Appeals | Transactional store.appeal; creator match, unknown/duplicate, race and rollback tests; real appeal audit record |
 | Rate limiting | Explicit memory storage; 10/minute and 100/day; real localhost HTTP 201×10 then 429×2 |
 | Structured audit log | artifacts/audit_sample.json: at least three real events including appeal, original scores retained |
-| Two observed submissions with high/lower confidence | PENDING: successful live examples with high/lower confidence; controlled examples are separately labeled and do not substitute for live evidence |
+| Two observed submissions with high/lower confidence | Observed live decision confidence 0.864150 / 0.088171; both are support for uncertainty, not directional authorship verdicts; controlled examples are separately labeled and do not substitute for live evidence |
 | README | Architecture, setup, APIs, signals/math, exact labels, actual evidence, limitations, reflection, AI usage, manual video placeholder |
 | Stretch 1: ensemble | Three signals with 50/30/20 weights and independent diagnostics |
 | Stretch 2: provenance certificate | Expiring one-use challenge + registered token, persistent certificate and content display; verifies secret control ONLY, not humanity/authorship |
@@ -46,6 +46,10 @@ Re-read the supplied complete assignment and mapped every visible feature/delive
 | Real HTTP default quota observed 10 successes then 2 rejections | PASS |
 | Saved full pytest run has zero failures/errors/skips | PASS |
 | All label variants reachable in explicitly controlled endpoint tests | PASS |
+| Live high/lower decision-confidence pair is present (>=0.8 and <=0.5) | PASS |
+| Live samples contain real available semantic outputs, not controlled fixtures | PASS |
+| Scout failure retained and authorized alternate independent smoke succeeded | PASS |
+| Model authorization and all-uncertain live limitation are documented | PASS |
 
 Saved test result: **131 tests, 0 failures/errors, 0 skipped**. See pytest-results.xml. All tests are offline; no live success is inferred from mocks.
 
@@ -75,12 +79,15 @@ f2f3f04 feat: render real SQLite detection and appeal analytics
 3fac695 docs: plan stretch 4 structured metadata before implementation
 13c9038 feat: analyze structured creative-work metadata as a second modality
 9d80fbe test: capture reproducible API evidence and document honest limitations
+7790492 docs: audit rubric evidence planning chronology and remaining live approval
+722ef46 test: record authorized Groq live evidence and confidence variation
 ```
 
 ## Verification limitations and remaining tasks
 
-- Scout live attempt returned HTTP 404 model_not_found; sanitized evidence is committed. Alternate model availability is distinct from permission to use it.
-- PENDING: successful live examples with high/lower confidence.
+- Scout live attempt returned HTTP 404 model_not_found; sanitized evidence is committed. Owner explicitly authorized openai/gpt-oss-20b on October 20, 2026; its independent smoke and six live endpoint assessments succeeded.
+- Observed live decision confidence 0.864150 / 0.088171; both are support for uncertainty, not directional authorship verdicts.
+- No live likely_ai/likely_human result occurred in the captured run. Those branches are verified by controlled endpoint tests, explicitly separate from live evidence.
 - Local token control is not a verified-human credential; the scope is disclosed, not fabricated.
 - No empirical accuracy/calibration claims, verified human corpus, public deployment or human code-review claims.
 - GitHub Actions is supplied but not claimed to have run remotely.
@@ -90,8 +97,7 @@ f2f3f04 feat: render real SQLite detection and appeal analytics
 
 Tracked/staged changes immediately before this report was written:
 ```text
-M README.md
-?? artifacts/repository_audit.md
+M artifacts/repository_audit.md
 ```
 
 Final delivery checks run after committing this report verify a clean working tree. Private ignored files remain outside Git by design.
