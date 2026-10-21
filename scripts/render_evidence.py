@@ -23,6 +23,20 @@ def main():
             parts.append(f"| {item['name']} | {record['ai_likelihood_score']} | "
                          f"{record['confidence']:.6f} | {record['attribution']} |")
         parts += ["", "Full texts, diagnostics and responses: [live observations](artifacts/demo_live/observations.json)."]
+        complete = [item for item in live["submissions"] if item["response"].get("analysis_status") == "complete"]
+        if complete:
+            high = max(complete, key=lambda item: item["response"]["confidence"])
+            low = min(complete, key=lambda item: item["response"]["confidence"])
+            parts += ["", f"The observed high/lower pair is **{high['name']} "
+                      f"({high['response']['confidence']:.6f}, {high['response']['attribution']})** and "
+                      f"**{low['name']} ({low['response']['confidence']:.6f}, {low['response']['attribution']})**. "
+                      "Confidence supports the reported decision, not an authorship probability."]
+            if all(item["response"]["attribution"] == "uncertain" for item in complete):
+                parts += ["All live examples in this run remain uncertain. The high-confidence case is "
+                          "**confident uncertainty**, not a high-confidence AI/human verdict. "
+                          "No live directional classification is claimed, and no threshold was tuned "
+                          "to manufacture one. The longer sample has adequate length but the semantic "
+                          "signal remains uncertain; the short poem's limited evidence lowers confidence."]
     else:
         parts += ["**Live high/lower-confidence example requirement is pending.** "
                   "The prescribed model returned 404; no alternate-model approval has been recorded. "

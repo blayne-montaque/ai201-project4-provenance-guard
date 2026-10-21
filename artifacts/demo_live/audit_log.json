@@ -1,0 +1,580 @@
+{
+  "mode": "live",
+  "entries": [
+    {
+      "ai_likelihood_score": null,
+      "analysis_status": "metadata_only",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.0,
+      "content_hash": "5a40d0e38cfb4e469107fc87606ab49f7e9b7140eae76fea1e66754b5d1ab783",
+      "content_id": "ba3f2325-9fba-4c9f-81c1-a103416a2475",
+      "content_type": "metadata",
+      "creator_id": "demo-artist",
+      "event_id": 9,
+      "event_type": "submission",
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "Metadata consistency cannot establish authorship.",
+      "signals": {
+        "metadata_consistency": {
+          "available": true,
+          "diagnostics": {
+            "authorship_verified": false,
+            "medium": "image",
+            "self_reported_ai_disclosure": "none",
+            "step_count": 2,
+            "tool_count": 2,
+            "warnings": []
+          },
+          "insufficient_evidence": true,
+          "name": "metadata_consistency",
+          "score": null
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-21T00:04:00.026121+00:00",
+      "uncertainty_reasons": [
+        "metadata_is_self_reported",
+        "underlying_media_not_analyzed"
+      ]
+    },
+    {
+      "certificate_id": "c8b15b8c-cadb-409b-9582-166c9eaf05a1",
+      "creator_id": "demo-writer",
+      "display_label": "Verified secret control (demo)",
+      "event_id": 8,
+      "event_type": "certificate_issued",
+      "issued_at": "2026-10-21T00:04:00.017106+00:00",
+      "scope": "Verifies control of a registered token only; not humanity, identity, or authorship.",
+      "timestamp": "2026-10-21T00:04:00.017106+00:00",
+      "verification_method": "one_time_challenge_and_registered_token",
+      "verification_status": "verified_secret_control"
+    },
+    {
+      "ai_likelihood_score": 0.3435714891966276,
+      "analysis_status": "complete",
+      "appeal_filed": true,
+      "appeal_id": "8230f441-faf0-4e77-94b2-de870b4ad271",
+      "appeal_reasoning": "Demonstration appeal: please review the original draft and its context.",
+      "attribution": "uncertain",
+      "classification_timestamp": "2026-10-21T00:03:55.563894+00:00",
+      "confidence": 0.449816,
+      "content_hash": "fff4ce484ab66532e6b68fd5f462093d50d158016471e761d1e4a5f5d9c509c9",
+      "content_id": "fd35aa7e-d70c-4313-b666-3c64cd57e2c1",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 7,
+      "event_type": "appeal",
+      "evidence": {
+        "alphabetic_ratio": 0.9816849816849816,
+        "sentence_count": 3,
+        "sufficiency": 0.5375,
+        "word_count": 43
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 0.5214283693445747,
+      "signal_spread": 0.4785716306554253,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "explanation": "The passage uses generic, formal language with balanced pros and cons, lacking personal anecdotes or unique phrasing. Its structure is straightforward and could be produced by either a human or an AI, offering no distinctive markers.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": true
+          },
+          "insufficient_evidence": true,
+          "name": "groq",
+          "score": 0.4
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.0,
+            "repeated_trigram_fraction": 0.0,
+            "trigram_count": 41,
+            "unique_trigrams": 41
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.0
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 2,
+            "sentence_count": 3,
+            "sentence_length_cv": 0.3792908472162812,
+            "type_token_ratio": 0.8837209302325582,
+            "word_count": 43
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.4785716306554253
+        }
+      },
+      "status": "under_review",
+      "timestamp": "2026-10-21T00:03:59.927623+00:00",
+      "uncertainty_reasons": [
+        "insufficient_text",
+        "groq_insufficient_evidence",
+        "semantic_uncertainty"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": 0.38946699141100893,
+      "analysis_status": "complete",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.088171,
+      "content_hash": "e9f0e279f6b367a64a60b2e55428d7e1305f2ec22fea48f28fc468f05c0d2300",
+      "content_id": "77f652e3-48ba-4ac2-9b29-840befd5b12f",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 6,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.925,
+        "sentence_count": 3,
+        "sufficiency": 0.1,
+        "word_count": 8
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 0.5351100286299701,
+      "signal_spread": 0.4648899713700298,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "explanation": "The passage is very brief, uses simple repetition and a poetic image, which could arise from either human or AI writing. Its brevity limits observable stylistic cues.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": true
+          },
+          "insufficient_evidence": true,
+          "name": "groq",
+          "score": 0.4
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.33333333333333337,
+            "repeated_trigram_fraction": 0.0,
+            "trigram_count": 6,
+            "unique_trigrams": 6
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.1
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 1,
+            "sentence_count": 3,
+            "sentence_length_cv": 0.3535533905932738,
+            "type_token_ratio": 0.75,
+            "word_count": 8
+          },
+          "insufficient_evidence": true,
+          "name": "stylometry",
+          "score": 0.5648899713700298
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-21T00:03:59.918743+00:00",
+      "uncertainty_reasons": [
+        "insufficient_text",
+        "groq_insufficient_evidence",
+        "stylometry_insufficient_evidence",
+        "semantic_uncertainty"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": 0.608906779661017,
+      "analysis_status": "complete",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.86415,
+      "content_hash": "fdd22c5adeae1b57faf452db300c3bc011d3d8b7d8ca74aa5051ed36368b604d",
+      "content_id": "4557b0c5-ec71-4c29-87a1-9a1edb4c6be2",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 5,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9715504978662873,
+        "sentence_count": 10,
+        "sufficiency": 1,
+        "word_count": 120
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 0.6237005649717513,
+      "signal_spread": 0.37629943502824864,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "explanation": "Repetitive structure, generic phrasing, lack of depth or variation, suggests possible AI generation, but could also be a human poetic exercise.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": true
+          },
+          "insufficient_evidence": false,
+          "name": "groq",
+          "score": 0.55
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.9,
+            "repeated_trigram_fraction": 0.2457627118644068,
+            "trigram_count": 118,
+            "unique_trigrams": 89
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.44203389830508477
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 2,
+            "sentence_count": 10,
+            "sentence_length_cv": 0.0,
+            "type_token_ratio": 0.38333333333333336,
+            "word_count": 120
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.8183333333333334
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-21T00:03:59.493075+00:00",
+      "uncertainty_reasons": [
+        "semantic_uncertainty"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": 0.3119243675932641,
+      "analysis_status": "complete",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.377476,
+      "content_hash": "19cb0cc9d2fa93c05f77e8611731ac6d9fd6d9edaa097f89d2f7f51316f1e76d",
+      "content_id": "3bb3329f-e41f-4f5d-860a-2f4920f1bf7b",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 4,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9663461538461539,
+        "sentence_count": 3,
+        "sufficiency": 0.4875,
+        "word_count": 39
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 0.6,
+      "signal_spread": 0.4,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "explanation": "The passage uses straightforward, common phrasing, no unusual syntax or repetitive patterns typical of some AI outputs. It reads like a casual reflection, with balanced pros and cons, and references studies in a generic way.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": true
+          },
+          "insufficient_evidence": true,
+          "name": "groq",
+          "score": 0.4
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.0,
+            "repeated_trigram_fraction": 0.0,
+            "trigram_count": 37,
+            "unique_trigrams": 37
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.0
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 5,
+            "sentence_count": 3,
+            "sentence_length_cv": 0.3820426775833677,
+            "type_token_ratio": 0.8974358974358975,
+            "word_count": 39
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.3730812253108803
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-21T00:03:58.449499+00:00",
+      "uncertainty_reasons": [
+        "insufficient_text",
+        "groq_insufficient_evidence",
+        "semantic_uncertainty"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": 0.4241860465116279,
+      "analysis_status": "complete",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.335547,
+      "content_hash": "00d78ebfc0168a3dcbcd2a34e2fed3feb9c17dc185264e66ed8184492340ad59",
+      "content_id": "acab77bc-e8d3-4097-bf53-169a54b3b2d8",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 3,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9922178988326849,
+        "sentence_count": 2,
+        "sufficiency": 0.3583333333333333,
+        "word_count": 43
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 0.41937984496124026,
+      "signal_spread": 0.5806201550387597,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "explanation": "The passage uses formal academic diction, economic terminology, and a balanced tone typical of scholarly writing. No distinctive stylistic quirks or errors that strongly indicate AI or human authorship.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": true
+          },
+          "insufficient_evidence": true,
+          "name": "groq",
+          "score": 0.5
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.0,
+            "repeated_trigram_fraction": 0.0,
+            "trigram_count": 41,
+            "unique_trigrams": 41
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.0
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 1,
+            "sentence_count": 2,
+            "sentence_length_cv": 0.2558139534883721,
+            "type_token_ratio": 0.8604651162790697,
+            "word_count": 43
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.5806201550387597
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-21T00:03:57.065960+00:00",
+      "uncertainty_reasons": [
+        "insufficient_text",
+        "groq_insufficient_evidence",
+        "semantic_uncertainty",
+        "signal_disagreement"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": 0.17477598374197306,
+      "analysis_status": "complete",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.389044,
+      "content_hash": "0831a1143d08fdac20fb2478b7d80d01135824c2fbda73bc45313b97c6e7a548",
+      "content_id": "d85b379f-d43a-46db-8616-660ce93d140d",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 2,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9790794979079498,
+        "sentence_count": 5,
+        "sufficiency": 0.6875,
+        "word_count": 55
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 0.6674133875267565,
+      "signal_spread": 0.3325866124732435,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "explanation": "Informal tone, slang, inconsistent capitalization, personal anecdotes, and casual phrasing typical of human writing.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": false
+          },
+          "insufficient_evidence": false,
+          "name": "groq",
+          "score": 0.15
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.0,
+            "repeated_trigram_fraction": 0.0,
+            "trigram_count": 53,
+            "unique_trigrams": 53
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.0
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 3,
+            "sentence_count": 5,
+            "sentence_length_cv": 0.6111904114171495,
+            "type_token_ratio": 0.8727272727272727,
+            "word_count": 55
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.3325866124732435
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-21T00:03:56.327972+00:00",
+      "uncertainty_reasons": [
+        "insufficient_text"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    },
+    {
+      "ai_likelihood_score": 0.3435714891966276,
+      "analysis_status": "complete",
+      "appeal_filed": false,
+      "attribution": "uncertain",
+      "confidence": 0.449816,
+      "content_hash": "fff4ce484ab66532e6b68fd5f462093d50d158016471e761d1e4a5f5d9c509c9",
+      "content_id": "fd35aa7e-d70c-4313-b666-3c64cd57e2c1",
+      "content_type": "text",
+      "creator_id": "demo-writer",
+      "event_id": 1,
+      "event_type": "submission",
+      "evidence": {
+        "alphabetic_ratio": 0.9816849816849816,
+        "sentence_count": 3,
+        "sufficiency": 0.5375,
+        "word_count": 43
+      },
+      "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
+      "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
+      "signal_agreement": 0.5214283693445747,
+      "signal_spread": 0.4785716306554253,
+      "signals": {
+        "groq": {
+          "available": true,
+          "diagnostics": {
+            "explanation": "The passage uses generic, formal language with balanced pros and cons, lacking personal anecdotes or unique phrasing. Its structure is straightforward and could be produced by either a human or an AI, offering no distinctive markers.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": true
+          },
+          "insufficient_evidence": true,
+          "name": "groq",
+          "score": 0.4
+        },
+        "repetition": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Literary refrains can resemble templated output.",
+            "repeated_opening_fraction": 0.0,
+            "repeated_trigram_fraction": 0.0,
+            "trigram_count": 41,
+            "unique_trigrams": 41
+          },
+          "insufficient_evidence": false,
+          "name": "repetition",
+          "score": 0.0
+        },
+        "stylometry": {
+          "available": true,
+          "diagnostics": {
+            "assumption": "Uniformity is weak evidence, not proof of authorship.",
+            "punctuation_kinds": 2,
+            "sentence_count": 3,
+            "sentence_length_cv": 0.3792908472162812,
+            "type_token_ratio": 0.8837209302325582,
+            "word_count": 43
+          },
+          "insufficient_evidence": false,
+          "name": "stylometry",
+          "score": 0.4785716306554253
+        }
+      },
+      "status": "classified",
+      "timestamp": "2026-10-21T00:03:55.566893+00:00",
+      "uncertainty_reasons": [
+        "insufficient_text",
+        "groq_insufficient_evidence",
+        "semantic_uncertainty"
+      ],
+      "weights": {
+        "groq": 0.5,
+        "repetition": 0.2,
+        "stylometry": 0.3
+      }
+    }
+  ]
+}

@@ -20,12 +20,18 @@ stretch has its own earlier planning-only commit. See
 [repository audit](artifacts/repository_audit.md) for rubric evidence and limitations.
 
 The required Groq Scout model actually returned **HTTP 404 `model_not_found`**.
-[Sanitized live evidence](artifacts/groq_smoke_scout.json) also shows that the account
-lists `openai/gpt-oss-20b` as available. No automatic substitution is implemented.
-Live alternate-model use requires the project owner's explicit authorization.
-Until that is granted, successful live classifications and the required pair of
-live high/lower-confidence examples remain incomplete. Controlled examples below
-demonstrate code behavior and are explicitly **not** live model evidence.
+[Sanitized failure evidence](artifacts/groq_smoke_scout.json) is retained. On
+October 20, 2026, the project owner explicitly authorized `openai/gpt-oss-20b`.
+Its [independent live smoke test](artifacts/groq_smoke_authorized.json) succeeded,
+followed by six real endpoint submissions with live Groq assessments. The existing
+private `.env` now selects that authorized model; the Scout default and failure
+evidence remain available for reproduction. No automatic fallback is implemented.
+
+Observed decision confidence ranges from **0.088171 to 0.864150**. All six live
+results were `uncertain`: the high-confidence case supports withholding attribution,
+not a confident AI accusation. All three directional/uncertain label branches are
+separately demonstrated with explicit controlled fixtures. See the evidence below
+and [model substitution record](artifacts/model_substitution.md).
 
 The GitHub repository has not been created or pushed. No deployment, course
 submission or video recording has been performed. The separate detailed grading
@@ -100,8 +106,9 @@ databases and `instance/` are ignored. `requirements.txt` pins direct dependenci
 use the Python standard library. The Groq SDK version follows the assignment's
 recommended `0.15.0`; structured output is still strictly validated locally.
 
-After explicit approval of the alternate model, use these settings in the same
-PowerShell session (or set them in the private `.env`):
+The project owner's explicit approval is recorded in this repository. The existing
+local `.env` has the following model settings; when reproducing in a fresh checkout,
+set them in the same PowerShell session or in the private `.env`:
 
 ```powershell
 $env:GROQ_MODEL = 'openai/gpt-oss-20b'
@@ -257,7 +264,21 @@ evaluation, false-positive analysis and empirical calibration.
 ## Observed submissions and audit evidence
 
 <!-- BEGIN GENERATED EVIDENCE -->
-**Live high/lower-confidence example requirement is pending.** The prescribed model returned 404; no alternate-model approval has been recorded. The values below must not be presented as successful live Groq classifications.
+Live execution with `openai/gpt-oss-20b`, captured 2026-10-21T00:03:55.004523+00:00.
+These are observed API responses, not injected signal values. Input authorship is described in the source file; samples are not an accuracy benchmark.
+| Submission | Raw AI estimate | Decision confidence | Attribution |
+|---|---:|---:|---|
+| assignment_polished | 0.3435714891966276 | 0.449816 | uncertain |
+| assignment_casual | 0.17477598374197306 | 0.389044 | uncertain |
+| assignment_formal | 0.4241860465116279 | 0.335547 | uncertain |
+| assignment_edited | 0.3119243675932641 | 0.377476 | uncertain |
+| synthetic_template | 0.608906779661017 | 0.864150 | uncertain |
+| synthetic_short_poem | 0.38946699141100893 | 0.088171 | uncertain |
+
+Full texts, diagnostics and responses: [live observations](artifacts/demo_live/observations.json).
+
+The observed high/lower pair is **synthetic_template (0.864150, uncertain)** and **synthetic_short_poem (0.088171, uncertain)**. Confidence supports the reported decision, not an authorship probability.
+All live examples in this run remain uncertain. The high-confidence case is **confident uncertainty**, not a high-confidence AI/human verdict. No live directional classification is claimed, and no threshold was tuned to manufacture one. The longer sample has adequate length but the semantic signal remains uncertain; the short poem's limited evidence lowers confidence.
 
 Actual offline submissions exercised the real local signals, routes, SQLite and appeals with the API key deliberately absent. All six returned a null combined estimate and confidence 0, as specified for degraded analysis. Their local measurements still vary:
 
@@ -282,22 +303,22 @@ Controlled endpoint executions use deliberately injected fixed scores to verify 
 
 [Controlled response evidence](artifacts/demo_controlled/observations.json) includes its fixture provenance on every signal. It demonstrates high/lower decision support and all three exact labels, without claiming empirical detection quality.
 
-Three **actual SQLite audit entries** from the `offline` run follow (a field projection for readability). [Full entries with diagnostics](artifacts/audit_sample.json) and [complete run log](artifacts/demo_offline/audit_log.json) are committed. The third event is the appeal on the first submission; the first event remains classified.
+Three **actual SQLite audit entries** from the `live` run follow (a field projection for readability). [Full entries with diagnostics](artifacts/audit_sample.json) and [complete run log](artifacts/demo_live/audit_log.json) are committed. The third event is the appeal on the first submission; the first event remains classified.
 
 ```json
 [
   {
     "event_id": 1,
     "event_type": "submission",
-    "timestamp": "2026-10-20T20:54:21.882159+00:00",
-    "content_id": "0e39055e-6288-4081-a083-7cff0ae91d22",
+    "timestamp": "2026-10-21T00:03:55.566893+00:00",
+    "content_id": "fd35aa7e-d70c-4313-b666-3c64cd57e2c1",
     "attribution": "uncertain",
-    "ai_likelihood_score": null,
-    "confidence": 0.0,
+    "ai_likelihood_score": 0.3435714891966276,
+    "confidence": 0.449816,
     "status": "classified",
     "appeal_filed": false,
     "signal_scores": {
-      "groq": null,
+      "groq": 0.4,
       "repetition": 0.0,
       "stylometry": 0.4785716306554253
     }
@@ -305,15 +326,15 @@ Three **actual SQLite audit entries** from the `offline` run follow (a field pro
   {
     "event_id": 2,
     "event_type": "submission",
-    "timestamp": "2026-10-20T20:54:21.889964+00:00",
-    "content_id": "0b324bed-d320-4434-a3b0-f074a7c117ac",
+    "timestamp": "2026-10-21T00:03:56.327972+00:00",
+    "content_id": "d85b379f-d43a-46db-8616-660ce93d140d",
     "attribution": "uncertain",
-    "ai_likelihood_score": null,
-    "confidence": 0.0,
+    "ai_likelihood_score": 0.17477598374197306,
+    "confidence": 0.389044,
     "status": "classified",
     "appeal_filed": false,
     "signal_scores": {
-      "groq": null,
+      "groq": 0.15,
       "repetition": 0.0,
       "stylometry": 0.3325866124732435
     }
@@ -321,15 +342,15 @@ Three **actual SQLite audit entries** from the `offline` run follow (a field pro
   {
     "event_id": 7,
     "event_type": "appeal",
-    "timestamp": "2026-10-20T20:54:21.928894+00:00",
-    "content_id": "0e39055e-6288-4081-a083-7cff0ae91d22",
+    "timestamp": "2026-10-21T00:03:59.927623+00:00",
+    "content_id": "fd35aa7e-d70c-4313-b666-3c64cd57e2c1",
     "attribution": "uncertain",
-    "ai_likelihood_score": null,
-    "confidence": 0.0,
+    "ai_likelihood_score": 0.3435714891966276,
+    "confidence": 0.449816,
     "status": "under_review",
     "appeal_filed": true,
     "signal_scores": {
-      "groq": null,
+      "groq": 0.4,
       "repetition": 0.0,
       "stylometry": 0.4785716306554253
     },
@@ -455,7 +476,9 @@ dashboard requests both returned 200; submission quota results are recorded abov
 .\.venv\Scripts\python.exe -m scripts.http_smoke
 # Live, using the prescribed model (records actual sanitized failures too):
 .\.venv\Scripts\python.exe -m scripts.smoke_groq
-# Only after approved model configuration and an available service:
+# Authorized alternate-model smoke check:
+.\.venv\Scripts\python.exe -m scripts.smoke_groq --model openai/gpt-oss-20b --output artifacts/groq_smoke_authorized.json
+# Live endpoint evidence with the authorized model configuration:
 .\.venv\Scripts\python.exe -m scripts.demo --mode live
 ```
 
@@ -512,6 +535,13 @@ creation returns 201 instead of the assignment's illustrative 200. The credentia
 is explicitly secret-control verification rather than an unsupported claim that
 registration proves humanity. None of these changes is hidden.
 
+The actual Scout 404 also required the model substitution anticipated by the plan.
+After explicit owner approval, the project selected `openai/gpt-oss-20b` and captured
+its real outputs. The scoring functions, thresholds and prompts were not altered
+to force a live directional label. The longer synthetic template produced high
+support for uncertainty, while the short poem produced low support; both preserve
+the limitations stated in the original confidence definition.
+
 Codex assisted with the following work; this disclosure does not claim human
 review or approval of generated code:
 
@@ -540,9 +570,10 @@ inspection. Planning chronology is documented in the repository audit.
 **Video: not yet recorded.** The project owner will record and link it manually.
 Suggested two-minute route: show planning/history, submit a work, explain score
 and uncertainty, file an appeal and inspect the retained decision, show a `429`,
-then briefly show the dashboard, metadata and credential limitations. Publish the
-GitHub repository and submit the repository/video links through the Course Portal
-only after reviewing the work and resolving the live-evidence gap.
+then briefly show the dashboard, metadata and credential limitations. Explain that
+the real examples show high versus low support for an uncertain decision, while
+controlled fixtures exercise the other two labels. Publish the GitHub repository
+and submit the repository/video links through the Course Portal after review.
 
 ## Reference documentation
 

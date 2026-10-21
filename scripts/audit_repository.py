@@ -77,8 +77,30 @@ def main():
     live = json.loads(live_path.read_text()) if live_path.exists() else None
     live_records = [item["response"] for item in live["submissions"]] if live else []
     successful = [record for record in live_records if record.get("analysis_status") == "complete"]
-    varied = len(successful) >= 2 and max(r["confidence"] for r in successful) - min(r["confidence"] for r in successful) >= .2
-    live_status = "Observed live examples with confidence variation" if varied else "PENDING: successful live examples with high/lower confidence"
+    varied = (len(successful) >= 2 and max(r["confidence"] for r in successful) >= .8
+              and min(r["confidence"] for r in successful) <= .5)
+    if varied:
+        high, low = max(r["confidence"] for r in successful), min(r["confidence"] for r in successful)
+        live_status = f"Observed live decision confidence {high:.6f} / {low:.6f}"
+        if all(record["attribution"] == "uncertain" for record in successful):
+            live_status += "; both are support for uncertainty, not directional authorship verdicts"
+    else:
+        live_status = "PENDING: successful live examples with high/lower confidence"
+    check("Live high/lower decision-confidence pair is present (>=0.8 and <=0.5)", varied)
+    check("Live samples contain real available semantic outputs, not controlled fixtures",
+          len(successful) == len(live_records) and len(successful) >= 2 and all(
+              record["signals"]["groq"]["available"]
+              and record["signals"]["groq"]["diagnostics"].get("model") == "openai/gpt-oss-20b"
+              and all(signal["diagnostics"].get("source") != "controlled_test_fixture"
+                      for signal in record["signals"].values()) for record in successful))
+    scout = json.loads((ROOT / "artifacts" / "groq_smoke_scout.json").read_text())
+    approved = json.loads((ROOT / "artifacts" / "groq_smoke_authorized.json").read_text())
+    check("Scout failure retained and authorized alternate independent smoke succeeded",
+          scout["assessment"]["diagnostics"].get("http_status") == 404
+          and approved["model"] == "openai/gpt-oss-20b" and approved["assessment"]["available"])
+    check("Model authorization and all-uncertain live limitation are documented",
+          "explicitly authorized" in readme and "All six live" in readme
+          and (ROOT / "artifacts" / "model_substitution.md").is_file())
     head = git("rev-parse", "--short", "HEAD")
     lines = ["# Repository audit", "", f"Generated {utcnow()}. Snapshot HEAD: `{head}`.",
              "This file is generated before its own final audit commit; that commit cannot contain its own hash.",
@@ -118,8 +140,11 @@ def main():
     lines += [f"{commit[:7]} {subjects[commit]}" for commit in commits]
     lines += ["```", "", "## Verification limitations and remaining tasks", "",
               "- Scout live attempt returned HTTP 404 model_not_found; sanitized evidence is committed. "
-              "Alternate model availability is distinct from permission to use it.",
+              "Owner explicitly authorized openai/gpt-oss-20b on October 20, 2026; "
+              "its independent smoke and six live endpoint assessments succeeded.",
               "- " + live_status + ".",
+              "- No live likely_ai/likely_human result occurred in the captured run. Those branches "
+              "are verified by controlled endpoint tests, explicitly separate from live evidence.",
               "- Local token control is not a verified-human credential; the scope is disclosed, not fabricated.",
               "- No empirical accuracy/calibration claims, verified human corpus, public deployment or human code-review claims.",
               "- GitHub Actions is supplied but not claimed to have run remotely.",

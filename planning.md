@@ -346,3 +346,15 @@ submission quota and analytics as text. Acceptance: valid metadata persists,
 explicit duplicate/out-of-order/future warnings work, invalid schema rejects
 without calling Groq, no raw metadata in audit events, metadata can be appealed,
 and alternating text/metadata requests share the same rate limit.
+
+## Authorized model substitution — October 20, 2026
+
+The prescribed Scout live attempt returned HTTP 404 `model_not_found`; the sanitized
+response and account model-list check are retained in `artifacts/groq_smoke_scout.json`.
+The project owner explicitly authorized `openai/gpt-oss-20b` in the conversation
+after that failure. Configure the existing private `.env` with this model and
+`ALLOW_ALTERNATE_MODEL=true`, preserving the API key. Run the alternate signal
+independently first, then the real submission/appeal demo and update evidence.
+Keep weights, thresholds and uncertainty semantics unchanged; retain any actual
+live failures or unexpected classifications rather than tuning examples into a
+claimed success. This is an explicit selection, not an automatic fallback.

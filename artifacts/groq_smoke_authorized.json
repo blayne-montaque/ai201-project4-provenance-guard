@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-10-21T00:03:47.346461+00:00",
+  "mode": "live_api_attempt",
+  "sample_source": "Codex-authored synthetic prose; not verified human text",
+  "model": "openai/gpt-oss-20b",
+  "assessment": {
+    "name": "groq",
+    "score": 0.3,
+    "available": true,
+    "insufficient_evidence": false,
+    "diagnostics": {
+      "model": "openai/gpt-oss-20b",
+      "explanation": "The passage has natural flow, specific sensory details, and a coherent narrative arc without obvious repetitive or formulaic phrasing typical of some AI outputs. No clear markers of machine generation are present.",
+      "uncertainty": true
+    }
+  },
+  "availability_check": {
+    "meta-llama/llama-4-scout-17b-16e-instruct": false,
+    "openai/gpt-oss-20b": true
+  }
+}

@@ -67,7 +67,10 @@ def capture(mode, output):
         observations["analytics"] = client.get("/analytics").json
         events = client.get("/log?limit=200").json["entries"]
         write_json(output / "audit_log.json", {"mode": mode, "entries": events})
-        (output / "dashboard.html").write_text(client.get("/dashboard").get_data(as_text=True), encoding="utf-8")
+        html = client.get("/dashboard").get_data(as_text=True)
+        # Normalize insignificant trailing whitespace in the committed HTML snapshot.
+        (output / "dashboard.html").write_text(
+            "\n".join(line.rstrip() for line in html.splitlines()) + "\n", encoding="utf-8")
     write_json(output / "observations.json", observations)
     print(json.dumps({"mode": mode, "output": str(output), "submissions": [
         {"name": item["name"], "attribution": item["response"]["attribution"],

@@ -1,14 +1,14 @@
 {
-  "mode": "offline",
+  "mode": "live",
   "entries": [
     {
-      "ai_likelihood_score": null,
-      "analysis_status": "degraded",
+      "ai_likelihood_score": 0.3435714891966276,
+      "analysis_status": "complete",
       "appeal_filed": false,
       "attribution": "uncertain",
-      "confidence": 0.0,
+      "confidence": 0.449816,
       "content_hash": "fff4ce484ab66532e6b68fd5f462093d50d158016471e761d1e4a5f5d9c509c9",
-      "content_id": "0e39055e-6288-4081-a083-7cff0ae91d22",
+      "content_id": "fd35aa7e-d70c-4313-b666-3c64cd57e2c1",
       "content_type": "text",
       "creator_id": "demo-writer",
       "event_id": 1,
@@ -21,18 +21,19 @@
       },
       "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
       "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
-      "signal_agreement": null,
-      "signal_spread": null,
+      "signal_agreement": 0.5214283693445747,
+      "signal_spread": 0.4785716306554253,
       "signals": {
         "groq": {
-          "available": false,
+          "available": true,
           "diagnostics": {
-            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
-            "reason": "missing_api_key"
+            "explanation": "The passage uses generic, formal language with balanced pros and cons, lacking personal anecdotes or unique phrasing. Its structure is straightforward and could be produced by either a human or an AI, offering no distinctive markers.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": true
           },
           "insufficient_evidence": true,
           "name": "groq",
-          "score": null
+          "score": 0.4
         },
         "repetition": {
           "available": true,
@@ -63,10 +64,11 @@
         }
       },
       "status": "classified",
-      "timestamp": "2026-10-20T20:54:21.882159+00:00",
+      "timestamp": "2026-10-21T00:03:55.566893+00:00",
       "uncertainty_reasons": [
         "insufficient_text",
-        "groq_unavailable"
+        "groq_insufficient_evidence",
+        "semantic_uncertainty"
       ],
       "weights": {
         "groq": 0.5,
@@ -75,13 +77,13 @@
       }
     },
     {
-      "ai_likelihood_score": null,
-      "analysis_status": "degraded",
+      "ai_likelihood_score": 0.17477598374197306,
+      "analysis_status": "complete",
       "appeal_filed": false,
       "attribution": "uncertain",
-      "confidence": 0.0,
+      "confidence": 0.389044,
       "content_hash": "0831a1143d08fdac20fb2478b7d80d01135824c2fbda73bc45313b97c6e7a548",
-      "content_id": "0b324bed-d320-4434-a3b0-f074a7c117ac",
+      "content_id": "d85b379f-d43a-46db-8616-660ce93d140d",
       "content_type": "text",
       "creator_id": "demo-writer",
       "event_id": 2,
@@ -94,18 +96,19 @@
       },
       "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
       "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
-      "signal_agreement": null,
-      "signal_spread": null,
+      "signal_agreement": 0.6674133875267565,
+      "signal_spread": 0.3325866124732435,
       "signals": {
         "groq": {
-          "available": false,
+          "available": true,
           "diagnostics": {
-            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
-            "reason": "missing_api_key"
+            "explanation": "Informal tone, slang, inconsistent capitalization, personal anecdotes, and casual phrasing typical of human writing.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": false
           },
-          "insufficient_evidence": true,
+          "insufficient_evidence": false,
           "name": "groq",
-          "score": null
+          "score": 0.15
         },
         "repetition": {
           "available": true,
@@ -136,10 +139,9 @@
         }
       },
       "status": "classified",
-      "timestamp": "2026-10-20T20:54:21.889964+00:00",
+      "timestamp": "2026-10-21T00:03:56.327972+00:00",
       "uncertainty_reasons": [
-        "insufficient_text",
-        "groq_unavailable"
+        "insufficient_text"
       ],
       "weights": {
         "groq": 0.5,
@@ -148,16 +150,16 @@
       }
     },
     {
-      "ai_likelihood_score": null,
-      "analysis_status": "degraded",
+      "ai_likelihood_score": 0.3435714891966276,
+      "analysis_status": "complete",
       "appeal_filed": true,
-      "appeal_id": "f26ca1e6-e9b5-4cf8-8614-697dbf69480b",
+      "appeal_id": "8230f441-faf0-4e77-94b2-de870b4ad271",
       "appeal_reasoning": "Demonstration appeal: please review the original draft and its context.",
       "attribution": "uncertain",
-      "classification_timestamp": "2026-10-20T20:54:21.881158+00:00",
-      "confidence": 0.0,
+      "classification_timestamp": "2026-10-21T00:03:55.563894+00:00",
+      "confidence": 0.449816,
       "content_hash": "fff4ce484ab66532e6b68fd5f462093d50d158016471e761d1e4a5f5d9c509c9",
-      "content_id": "0e39055e-6288-4081-a083-7cff0ae91d22",
+      "content_id": "fd35aa7e-d70c-4313-b666-3c64cd57e2c1",
       "content_type": "text",
       "creator_id": "demo-writer",
       "event_id": 7,
@@ -170,18 +172,19 @@
       },
       "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
       "score_interpretation": "uncalibrated AI-likelihood estimate; not proof of authorship",
-      "signal_agreement": null,
-      "signal_spread": null,
+      "signal_agreement": 0.5214283693445747,
+      "signal_spread": 0.4785716306554253,
       "signals": {
         "groq": {
-          "available": false,
+          "available": true,
           "diagnostics": {
-            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
-            "reason": "missing_api_key"
+            "explanation": "The passage uses generic, formal language with balanced pros and cons, lacking personal anecdotes or unique phrasing. Its structure is straightforward and could be produced by either a human or an AI, offering no distinctive markers.",
+            "model": "openai/gpt-oss-20b",
+            "uncertainty": true
           },
           "insufficient_evidence": true,
           "name": "groq",
-          "score": null
+          "score": 0.4
         },
         "repetition": {
           "available": true,
@@ -212,10 +215,11 @@
         }
       },
       "status": "under_review",
-      "timestamp": "2026-10-20T20:54:21.928894+00:00",
+      "timestamp": "2026-10-21T00:03:59.927623+00:00",
       "uncertainty_reasons": [
         "insufficient_text",
-        "groq_unavailable"
+        "groq_insufficient_evidence",
+        "semantic_uncertainty"
       ],
       "weights": {
         "groq": 0.5,
