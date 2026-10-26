@@ -567,13 +567,7 @@ inspection. Planning chronology is documented in the repository audit.
 
 ## Portfolio walkthrough
 
-**Video: not yet recorded.** The project owner will record and link it manually.
-Suggested two-minute route: show planning/history, submit a work, explain score
-and uncertainty, file an appeal and inspect the retained decision, show a `429`,
-then briefly show the dashboard, metadata and credential limitations. Explain that
-the real examples show high versus low support for an uncertain decision, while
-controlled fixtures exercise the other two labels. Publish the GitHub repository
-and submit the repository/video links through the Course Portal after review.
+https://howardu-my.sharepoint.com/:f:/g/personal/blayne_montaque_bison_howard_edu/IgDALQuofFEpTamZaSK9JFVDATr1DGwb3Y2UM5UeTbZ70O8?e=cVDioB
 
 ## Reference documentation
 

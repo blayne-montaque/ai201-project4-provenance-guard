@@ -1,9 +1,9 @@
 {
-  "captured_at": "2026-10-20T20:54:22.565935+00:00",
-  "run_id": "25ed7982-598c-4ec8-b5fc-2ae9735f7673",
+  "captured_at": "2026-10-26T07:34:40.357737+00:00",
+  "run_id": "f09a6601-8c12-4e1e-adf7-94185a826191",
   "mode": "controlled",
   "transport": "Flask test client exercising real routes and SQLite",
-  "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "model": "openai/gpt-oss-20b",
   "submissions": [
     {
       "name": "high_ai",
@@ -18,7 +18,7 @@
         "certificate": null,
         "confidence": 0.9,
         "content_hash": "cf0e777685bfddf71f6d91a81b2924bfc488dfb7a31862e15654a89f4398d055",
-        "content_id": "6c3bc5a6-6d70-49f4-bd69-0f12fefd8cc7",
+        "content_id": "8ceed7d2-7110-4b4e-81d5-a95dbd1659cb",
         "content_type": "text",
         "creator_id": "demo-writer",
         "evidence": {
@@ -61,7 +61,7 @@
           }
         },
         "status": "classified",
-        "timestamp": "2026-10-20T20:54:22.574436+00:00",
+        "timestamp": "2026-10-26T07:34:40.367085+00:00",
         "uncertainty_reasons": [],
         "weights": {
           "groq": 0.5,
@@ -83,7 +83,7 @@
         "certificate": null,
         "confidence": 0.7,
         "content_hash": "757d2d2ec5319023e7380988619c3411b1195dde3b1ade236fac89c4a40cff38",
-        "content_id": "c75f5b61-eafd-473c-a2ea-9370004afc7f",
+        "content_id": "cfa3cf98-5c85-42a2-9461-e9726d4e9662",
         "content_type": "text",
         "creator_id": "demo-writer",
         "evidence": {
@@ -126,7 +126,7 @@
           }
         },
         "status": "classified",
-        "timestamp": "2026-10-20T20:54:22.583161+00:00",
+        "timestamp": "2026-10-26T07:34:40.376101+00:00",
         "uncertainty_reasons": [
           "intermediate_score"
         ],
@@ -150,7 +150,7 @@
         "certificate": null,
         "confidence": 0.9,
         "content_hash": "4a78ee3c23eb4a09667252bc12bab1b93425bda034107f079b5099194b9617c1",
-        "content_id": "be5e2dbc-fba5-4e5e-929b-ccae01a9b351",
+        "content_id": "9f3a0501-3bf7-4611-90af-4ca4eec59ef2",
         "content_type": "text",
         "creator_id": "demo-writer",
         "evidence": {
@@ -193,7 +193,7 @@
           }
         },
         "status": "classified",
-        "timestamp": "2026-10-20T20:54:22.591162+00:00",
+        "timestamp": "2026-10-26T07:34:40.384620+00:00",
         "uncertainty_reasons": [],
         "weights": {
           "groq": 0.5,
@@ -209,13 +209,13 @@
       "ai_likelihood_score": 0.95,
       "analysis_status": "complete",
       "appeal_filed": true,
-      "appeal_id": "cc7fc0e4-3882-44d0-94c7-bbdaaa5d580c",
+      "appeal_id": "49ec0cae-7542-4803-a730-b6eb3e800540",
       "appeal_reasoning": "Demonstration appeal: please review the original draft and its context.",
       "attribution": "likely_ai",
-      "classification_timestamp": "2026-10-20T20:54:22.574436+00:00",
+      "classification_timestamp": "2026-10-26T07:34:40.367085+00:00",
       "confidence": 0.9,
       "content_hash": "cf0e777685bfddf71f6d91a81b2924bfc488dfb7a31862e15654a89f4398d055",
-      "content_id": "6c3bc5a6-6d70-49f4-bd69-0f12fefd8cc7",
+      "content_id": "8ceed7d2-7110-4b4e-81d5-a95dbd1659cb",
       "content_type": "text",
       "creator_id": "demo-writer",
       "evidence": {
@@ -258,7 +258,7 @@
         }
       },
       "status": "under_review",
-      "timestamp": "2026-10-20T20:54:22.599380+00:00",
+      "timestamp": "2026-10-26T07:34:40.395641+00:00",
       "uncertainty_reasons": [],
       "weights": {
         "groq": 0.5,
@@ -275,7 +275,7 @@
     "certificate": null,
     "confidence": 0.9,
     "content_hash": "cf0e777685bfddf71f6d91a81b2924bfc488dfb7a31862e15654a89f4398d055",
-    "content_id": "6c3bc5a6-6d70-49f4-bd69-0f12fefd8cc7",
+    "content_id": "8ceed7d2-7110-4b4e-81d5-a95dbd1659cb",
     "content_type": "text",
     "creator_id": "demo-writer",
     "evidence": {
@@ -318,7 +318,7 @@
       }
     },
     "status": "under_review",
-    "timestamp": "2026-10-20T20:54:22.574436+00:00",
+    "timestamp": "2026-10-26T07:34:40.367085+00:00",
     "uncertainty_reasons": [],
     "weights": {
       "groq": 0.5,
@@ -327,19 +327,19 @@
     }
   },
   "certificate": {
-    "certificate_id": "7bc0ee9e-d2af-4300-8f5b-6a6e2e5ff4f8",
+    "certificate_id": "0710ebfb-e006-4942-b306-84b4f780c36b",
     "creator_id": "demo-writer",
     "display_label": "Verified secret control (demo)",
-    "issued_at": "2026-10-20T20:54:22.682272+00:00",
+    "issued_at": "2026-10-26T07:34:40.483048+00:00",
     "scope": "Verifies control of a registered token only; not humanity, identity, or authorship.",
     "verification_method": "one_time_challenge_and_registered_token",
     "verification_status": "verified_secret_control"
   },
   "credential_on_content": {
-    "certificate_id": "7bc0ee9e-d2af-4300-8f5b-6a6e2e5ff4f8",
+    "certificate_id": "0710ebfb-e006-4942-b306-84b4f780c36b",
     "creator_id": "demo-writer",
     "display_label": "Verified secret control (demo)",
-    "issued_at": "2026-10-20T20:54:22.682272+00:00",
+    "issued_at": "2026-10-26T07:34:40.483048+00:00",
     "scope": "Verifies control of a registered token only; not humanity, identity, or authorship.",
     "verification_method": "one_time_challenge_and_registered_token",
     "verification_status": "verified_secret_control"
@@ -352,7 +352,7 @@
     "certificate": null,
     "confidence": 0.0,
     "content_hash": "5a40d0e38cfb4e469107fc87606ab49f7e9b7140eae76fea1e66754b5d1ab783",
-    "content_id": "f8e3b735-59af-4305-bfd9-d4b5b5fb3908",
+    "content_id": "9e538a56-af84-446f-82f8-880a4bce881d",
     "content_type": "metadata",
     "creator_id": "demo-artist",
     "label": "Authorship uncertain. The available signals do not support a reliable AI-versus-human assessment. No definitive attribution is made.",
@@ -374,7 +374,7 @@
       }
     },
     "status": "classified",
-    "timestamp": "2026-10-20T20:54:22.689778+00:00",
+    "timestamp": "2026-10-26T07:34:40.492059+00:00",
     "uncertainty_reasons": [
       "metadata_is_self_reported",
       "underlying_media_not_analyzed"
@@ -393,7 +393,7 @@
       "metadata": 1,
       "text": 3
     },
-    "generated_at": "2026-10-20T20:54:22.697785+00:00",
+    "generated_at": "2026-10-26T07:34:40.499820+00:00",
     "signal_disagreement_rate": 0.0,
     "total_submissions": 4,
     "uncertainty_rate": 0.5
