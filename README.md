@@ -567,7 +567,7 @@ inspection. Planning chronology is documented in the repository audit.
 
 ## Portfolio walkthrough
 
-https://howardu-my.sharepoint.com/:f:/g/personal/blayne_montaque_bison_howard_edu/IgDALQuofFEpTamZaSK9JFVDATr1DGwb3Y2UM5UeTbZ70O8?e=cVDioB
+https://howardu-my.sharepoint.com/:v:/g/personal/blayne_montaque_bison_howard_edu/IQBAjvRLE6bIQKJFEhLr1NusAZpsZUHkNd201qI-O5cJmME?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=bkbQoX
 
 ## Reference documentation
 
